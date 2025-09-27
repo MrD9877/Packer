@@ -1,0 +1,17 @@
+[Unit]
+Description=Test Packer Node
+After=cloud-final.service
+
+[Service]
+WorkingDirectory=/home/ec2-user/packer_image_test_node_server
+ExecStart=/usr/bin/npm start --prefix /home/ec2-user/packer_image_test_node_server
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=packer_image_test_node_server
+User=ec2-user
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=cloud-init.target
